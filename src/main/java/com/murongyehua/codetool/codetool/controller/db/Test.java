@@ -14,6 +14,6 @@ public class Test {
 
     @PostMapping("/test")
     public String test(){
-        return "test success";
+        return "test success!";
     }
 }
