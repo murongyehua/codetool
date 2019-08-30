@@ -8,14 +8,14 @@ import lombok.Data;
  * @version 1.0 2019/8/30
  */
 @Data
-public class ResultMap<T> {
+public class ResultMap {
 
     private String code;
     private String info;
-    private T data;
+    private Object data;
     private boolean success;
 
-    public ResultMap(String code,String info,boolean success,T data){
+    public ResultMap(String code,String info,boolean success,Object data){
         this.code = code;
         this.info = info;
         this.success = success;
@@ -30,8 +30,8 @@ public class ResultMap<T> {
         return new ResultMap(ENStatus.SUCCESS.getValue(),"操作成功",true,data);
     }
 
-    public static ResultMap isFail(Object data){
-        return new ResultMap(ENStatus.FAIL.getValue(),"操作失败",false,data);
+    public static ResultMap isFail(String info){
+        return new ResultMap(ENStatus.FAIL.getValue(),info,false,null);
     }
 
 }
