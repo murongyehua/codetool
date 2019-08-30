@@ -3,6 +3,7 @@ package com.murongyehua.codetool.codetool.controller.db;
 import com.murongyehua.codetool.codetool.dto.ResultMap;
 import com.murongyehua.codetool.codetool.service.db.OracleSqlDealService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,6 +18,7 @@ public class OracleController {
     @Autowired
     private OracleSqlDealService oracleSqlDealService;
 
+    @PostMapping("/insertRepeatable")
     public ResultMap insertRepeatable(String sql){
         return oracleSqlDealService.insertRepeatable(sql);
     }
