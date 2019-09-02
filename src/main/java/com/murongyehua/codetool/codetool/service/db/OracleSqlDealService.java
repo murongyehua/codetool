@@ -8,5 +8,5 @@ import com.murongyehua.codetool.codetool.dto.ResultMap;
  */
 public interface OracleSqlDealService {
 
-    ResultMap insertRepeatable(String sql);
+    ResultMap insertRepeatable(String sql, String indexField);
 }

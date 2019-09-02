@@ -19,8 +19,8 @@ public class OracleController {
     private OracleSqlDealService oracleSqlDealService;
 
     @PostMapping("/insertRepeatable")
-    public ResultMap insertRepeatable(String sql){
-        return oracleSqlDealService.insertRepeatable(sql);
+    public ResultMap insertRepeatable(String sql, String indexField){
+        return oracleSqlDealService.insertRepeatable(sql,indexField);
     }
 
 }
