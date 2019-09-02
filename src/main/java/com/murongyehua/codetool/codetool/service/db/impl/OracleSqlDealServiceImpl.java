@@ -25,9 +25,14 @@ public class OracleSqlDealServiceImpl implements OracleSqlDealService {
 
     @Override
     public ResultMap insertRepeatable(String sql, String indexField) {
-        String result = dealSingleSql(sql,indexField);
-        if (StrUtil.isEmpty(result)) {
-            return ResultMap.isFail(ENReturnMsg.ILLEGAL_INERT_SQL.getLabel());
+        String[] singleSqlArray = sql.replaceAll(StrUtil.CRLF, StrUtil.EMPTY).split(CommonSql.SEMICOLON);
+        StringBuilder result = new StringBuilder();
+        for (String string : singleSqlArray) {
+            String singleResult = dealSingleSql(sql,indexField);
+            if (StrUtil.isEmpty(singleResult)) {
+                return ResultMap.isFail(ENReturnMsg.ILLEGAL_INERT_SQL.getLabel(), string);
+            }
+            result.append(singleResult).append(StrUtil.CRLF);
         }
         return ResultMap.isSuccess(result);
     }

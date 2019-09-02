@@ -30,8 +30,8 @@ public class ResultMap {
         return new ResultMap(ENStatus.SUCCESS.getValue(),"操作成功",true,data);
     }
 
-    public static ResultMap isFail(String info){
-        return new ResultMap(ENStatus.FAIL.getValue(),info,false,null);
+    public static ResultMap isFail(String info, Object data){
+        return new ResultMap(ENStatus.FAIL.getValue(),info,false,data);
     }
 
 }
