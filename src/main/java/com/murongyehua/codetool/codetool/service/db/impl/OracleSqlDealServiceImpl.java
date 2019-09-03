@@ -1,15 +1,11 @@
 package com.murongyehua.codetool.codetool.service.db.impl;
 
-import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.StrUtil;
 import com.murongyehua.codetool.codetool.dto.ResultMap;
 import com.murongyehua.codetool.codetool.enums.ENReturnMsg;
 import com.murongyehua.codetool.codetool.service.db.OracleSqlDealService;
 import com.murongyehua.codetool.codetool.util.CommonSql;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
-
-import java.sql.Struct;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -28,7 +24,7 @@ public class OracleSqlDealServiceImpl implements OracleSqlDealService {
         String[] singleSqlArray = sql.replaceAll(StrUtil.CRLF, StrUtil.EMPTY).split(CommonSql.SEMICOLON);
         StringBuilder result = new StringBuilder();
         for (String string : singleSqlArray) {
-            String singleResult = dealSingleSql(sql,indexField);
+            String singleResult = dealSingleSql(string,indexField);
             if (StrUtil.isEmpty(singleResult)) {
                 return ResultMap.isFail(ENReturnMsg.ILLEGAL_INERT_SQL.getLabel(), string);
             }
