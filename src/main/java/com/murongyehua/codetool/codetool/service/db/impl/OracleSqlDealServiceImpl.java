@@ -102,7 +102,7 @@ public class OracleSqlDealServiceImpl implements OracleSqlDealService {
 
         if (fields != null && values != null) {
             template = CommonSql.ORACLE_INSERT_TEMPLATE.replaceAll(CommonSql.TABLE_NAME, fields[0]).replaceAll(CommonSql.INDEX_FIELD,indexField).replaceAll(CommonSql.INDEX_VALUE,values[0])
-                    .replaceAll(CommonSql.TABLE_COLUMNS,fields[1]).replaceAll(CommonSql.VALUE_AND_COLUMS, values[1]);
+                    .replaceAll(CommonSql.TABLE_COLUMNS,fields[1]).replaceAll(CommonSql.VALUE_AND_COLUMNS, values[1]);
         }
         return template;
     }
