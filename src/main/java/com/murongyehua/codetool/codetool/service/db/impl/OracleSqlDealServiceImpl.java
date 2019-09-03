@@ -24,7 +24,7 @@ public class OracleSqlDealServiceImpl implements OracleSqlDealService {
         String[] singleSqlArray = sql.replaceAll(StrUtil.CRLF, StrUtil.EMPTY).split(CommonSql.SEMICOLON);
         StringBuilder result = new StringBuilder();
         for (String string : singleSqlArray) {
-            String singleResult = dealSingleSql(string,indexField);
+            String singleResult = dealSingleSql(string.trim(),indexField);
             if (StrUtil.isEmpty(singleResult)) {
                 return ResultMap.isFail(ENReturnMsg.ILLEGAL_INERT_SQL.getLabel(), string);
             }
