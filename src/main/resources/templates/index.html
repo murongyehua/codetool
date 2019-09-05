@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="/layui/css/layui.css" rel="stylesheet" type="text/css" >
+    <script src="/js/jquery-3.4.1.min.js"></script>
+    <script src="/layui/layui.js" ></script>
+    <link href="/mycss/base.css" rel="stylesheet" type="text/css">
+    <link href="/mycss/index.css" rel="stylesheet" type="text/css">
+    <meta charset="UTF-8">
+    <title>code tool</title>
+</head>
+<body>
+    <div id="main">
+        <div id="function">
+            <button id="db" type="button" class="layui-btn layui-btn-normal">DB</button>
+            <button id="string" type="button" class="layui-btn layui-btn-normal">String</button>
+        </div>
+    </div>
+    <script>
+        $("#db").click(function () {
+            location.href = '/db';
+        })
+        $("#string").click(function () {
+            location.href = '';
+        })
+    </script>
+</body>
+</html>

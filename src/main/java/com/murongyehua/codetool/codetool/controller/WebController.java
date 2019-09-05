@@ -14,4 +14,29 @@ public class WebController {
     public String test(){
         return "Test";
     }
+
+    @GetMapping("/index")
+    public String index(){
+        return "index";
+    }
+
+    @GetMapping("/db")
+    public String db(){
+        return "dbDistributor";
+    }
+
+    @GetMapping("/sql")
+    public String sql(){
+        return "sqlDistributor";
+    }
+
+    @GetMapping("/oracleSql")
+    public String oracleSql(){
+        return "oracleSqlDistributor";
+    }
+
+    @GetMapping("/oracleInsertRepeatable")
+    public String oracleInsertRepeatable(){
+        return "oracleInsertRepeatable";
+    }
 }
