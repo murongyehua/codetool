@@ -39,4 +39,9 @@ public class WebController {
     public String oracleInsertRepeatable(){
         return "oracleInsertRepeatable";
     }
+
+    @GetMapping("/uuid")
+    public String uuid(){
+        return "uuid";
+    }
 }
