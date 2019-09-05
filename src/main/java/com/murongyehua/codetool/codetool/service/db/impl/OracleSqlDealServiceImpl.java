@@ -6,9 +6,8 @@ import com.murongyehua.codetool.codetool.enums.ENReturnMsg;
 import com.murongyehua.codetool.codetool.service.db.OracleSqlDealService;
 import com.murongyehua.codetool.codetool.util.CommonSql;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+
+import java.util.*;
 
 /**
  * @author liul
@@ -19,8 +18,15 @@ public class OracleSqlDealServiceImpl implements OracleSqlDealService {
 
     private static final int MIN_SQL_LENGTH = 6;
 
+    private Stack<String> leftStack = new Stack<>();
+
+    private Stack<String> rightStack = new Stack<>();
+
+    private static final String CHAOS_STRING = "&&%%@@!--";
+
     @Override
     public ResultMap insertRepeatable(String sql, String indexField) {
+        sql = sql.replaceAll(CommonSql.BRACKET, CHAOS_STRING);
         String[] singleSqlArray = sql.replaceAll(StrUtil.CRLF, StrUtil.EMPTY).replaceAll(StrUtil.LF, StrUtil.SPACE).split(CommonSql.SEMICOLON);
         StringBuilder result = new StringBuilder();
         for (String string : singleSqlArray) {
@@ -102,7 +108,7 @@ public class OracleSqlDealServiceImpl implements OracleSqlDealService {
 
         if (fields != null && values != null) {
             template = CommonSql.ORACLE_INSERT_TEMPLATE.replaceAll(CommonSql.TABLE_NAME, fields[0]).replaceAll(CommonSql.INDEX_FIELD,indexField).replaceAll(CommonSql.INDEX_VALUE,values[0])
-                    .replaceAll(CommonSql.TABLE_COLUMNS,fields[1]).replaceAll(CommonSql.VALUE_AND_COLUMNS, values[1]);
+                    .replaceAll(CommonSql.TABLE_COLUMNS,fields[1]).replaceAll(CommonSql.VALUE_AND_COLUMNS, values[1]).replaceAll(CHAOS_STRING, CommonSql.BRACKET);
         }
         return template;
     }
