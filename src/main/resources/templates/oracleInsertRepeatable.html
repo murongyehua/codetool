@@ -13,13 +13,13 @@
         <div class="layui-form-item">
             <label class="layui-form-label">索引字段</label>
             <div class="layui-input-block">
-                <input id="indexField" type="text" name="indexField" required  lay-verify="required" placeholder="建议使用主键、唯一键" autocomplete="off" class="layui-input">
+                <input id="indexField" type="text" name="indexField" required  lay-verify="required" placeholder="建议使用主键、唯一键，区分大小写" autocomplete="off" class="layui-input">
             </div>
         </div>
         <div class="layui-form-item layui-form-text">
             <label class="layui-form-label">原始sql</label>
             <div class="layui-input-block">
-                <textarea id="originSql" name="originSql" placeholder="请输入sql" class="layui-textarea"></textarea>
+                <textarea id="originSql" name="originSql" placeholder="请输入sql，建议使用pl/sql直接导出的sql" class="layui-textarea"></textarea>
             </div>
         </div>
         <div class="layui-form-item">
@@ -53,7 +53,7 @@
                     }
                 },
                 error: function () {
-                    alert("服务异常，请稍后再试")
+                    alert("转换失败，请检查sql格式与索引字段大小写是否正确")
                 }
             })
         })
