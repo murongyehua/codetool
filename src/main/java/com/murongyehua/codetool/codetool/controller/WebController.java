@@ -25,6 +25,11 @@ public class WebController {
         return "dbDistributor";
     }
 
+    @GetMapping("/stringDistributor")
+    public String string(){
+        return "stringDistributor";
+    }
+
     @GetMapping("/sql")
     public String sql(){
         return "sqlDistributor";
