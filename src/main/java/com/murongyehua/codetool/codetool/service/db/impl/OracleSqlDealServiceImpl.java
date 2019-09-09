@@ -33,7 +33,7 @@ public class OracleSqlDealServiceImpl implements OracleSqlDealService {
         for (String string : singleSqlArray) {
             String singleResult = dealSingleSql(string.trim(),indexField);
             if (StrUtil.isEmpty(singleResult)) {
-                return ResultMap.isFail(ENReturnMsg.ILLEGAL_INERT_SQL.getLabel(), string);
+                continue;
             }
             result.append(singleResult).append(StrUtil.CRLF);
         }
