@@ -38,7 +38,7 @@ public interface CommonSql {
 
     String LEFT_BRACKET = "(";
     String RIGHT_BRACKET = ")";
-    String BRACKET = "()";
+    String BRACKET = LEFT_BRACKET + RIGHT_BRACKET;
     String SEMICOLON = ";";
 
 }

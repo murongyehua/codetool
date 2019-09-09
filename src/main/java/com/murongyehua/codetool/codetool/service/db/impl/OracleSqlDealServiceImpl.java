@@ -27,7 +27,7 @@ public class OracleSqlDealServiceImpl implements OracleSqlDealService {
     @Override
     public ResultMap insertRepeatable(String sql, String indexField) {
         // 支持使用简单的oracle函数
-        sql = sql.replaceAll(CommonSql.BRACKET, CHAOS_STRING);
+        sql = sql.replace(CommonSql.BRACKET, CHAOS_STRING);
         String[] singleSqlArray = sql.replaceAll(StrUtil.CRLF, StrUtil.EMPTY).replaceAll(StrUtil.LF, StrUtil.SPACE).split(CommonSql.SEMICOLON);
         StringBuilder result = new StringBuilder();
         for (String string : singleSqlArray) {
@@ -109,7 +109,7 @@ public class OracleSqlDealServiceImpl implements OracleSqlDealService {
 
         if (fields != null && values != null) {
             template = CommonSql.ORACLE_INSERT_TEMPLATE.replaceAll(CommonSql.TABLE_NAME, fields[0]).replaceAll(CommonSql.INDEX_FIELD,indexField).replaceAll(CommonSql.INDEX_VALUE,values[0])
-                    .replaceAll(CommonSql.TABLE_COLUMNS,fields[1]).replaceAll(CommonSql.VALUE_AND_COLUMNS, values[1]).replaceAll(CHAOS_STRING, CommonSql.BRACKET);
+                    .replaceAll(CommonSql.TABLE_COLUMNS,fields[1]).replaceAll(CommonSql.VALUE_AND_COLUMNS, values[1]).replace(CHAOS_STRING, CommonSql.BRACKET);
         }
         return template;
     }
