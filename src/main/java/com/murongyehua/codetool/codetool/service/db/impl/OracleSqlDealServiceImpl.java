@@ -30,14 +30,26 @@ public class OracleSqlDealServiceImpl implements OracleSqlDealService {
         sql = sql.replace(CommonSql.BRACKET, CHAOS_STRING);
         String[] singleSqlArray = sql.replaceAll(StrUtil.CRLF, StrUtil.EMPTY).replaceAll(StrUtil.LF, StrUtil.SPACE).split(CommonSql.SEMICOLON);
         StringBuilder result = new StringBuilder();
+        int failNum = 0;
+        int successNum = 0;
         for (String string : singleSqlArray) {
             String singleResult = dealSingleSql(string.trim(),indexField);
             if (StrUtil.isEmpty(singleResult)) {
+                failNum++;
                 continue;
             }
+            successNum++;
             result.append(singleResult).append(StrUtil.CRLF);
         }
-        return ResultMap.isSuccess(result);
+        ResultMap resultMap = ResultMap.isSuccess(result);
+        String info;
+        if (failNum == 0) {
+            info = "本次全部转化成功，条数：" + successNum;
+        }else {
+            info = "本次转化成功：" + successNum + "条，失败：" + failNum + "条";
+        }
+        resultMap.setInfo(info);
+        return resultMap;
     }
 
     /**
